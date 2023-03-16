@@ -3,8 +3,8 @@
 ---
 <header>
     <div class="first_list">
-        <img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo">
-        <p class="hide">Sakura Festival</p>
+        <a href="/"><img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo"></a>
+        <a href="/"><p class="hide">Sakura Festival</p></a>
     </div>
 
     <nav class="hide">
@@ -43,6 +43,11 @@
     a {
         text-decoration: none;
         color: black;
+        transition: transform 0.5s;
+    }
+
+    a:hover {
+        transform: scale(1.02);
     }
 
     .sakura-logo {
@@ -109,6 +114,9 @@
             align-items: center;
             padding: 0.5rem 0;
             margin: 0;
+            border: 1px solid rgba(225, 164, 204, 0.183);
+
+            box-shadow: 0 0 10px rgba(225, 164, 204, 0.2); 
             text-decoration: none;
             background-color: none;
         }

@@ -3,7 +3,7 @@
 ---
 
 <div class="flex_row">
-	<slot name="icon" class="icon"></slot>
+	<img src={Astro.props.icon} class="icon"/>
 	<div class="info_content">
 		<h2 class="info_bold">{Astro.props.title}</h2>
 		<h2>{Astro.props.subtitle}</h2>
@@ -22,17 +22,13 @@
         margin-bottom: 1rem;
     }   
 
-    .flex_row img {
-        width: 2rem;
-        margin-right: 1rem;
-    }
-
     .info_bold {
         font-weight: bold;
     }
 
     .icon {
-        width: 1rem;
+    	width: 2rem;
+		margin-right: 1rem;
     }
 
 
