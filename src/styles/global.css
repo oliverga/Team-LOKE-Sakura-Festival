@@ -1,0 +1,52 @@
+
+/* import inter from google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+  :root {
+    --background-color: #f5f5f5;
+    --text-color: #101010;
+    --main-font: 'Inter', system-ui, sans-serif;
+    
+    /* Mobile */
+    --h1-mobile: 50px;
+    --h2-mobile: 24px;
+    --brødtekst-mobile: 16px;
+
+    /* Desktop */
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+		overflow-x: hidden;
+	}
+
+  body {
+    font-family: var(--main-font);
+    font-weight: normal;
+    line-height: 1.6;
+    color: #101010;
+  }
+   
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  h1 {
+		font-size: 50px;
+		line-height: 1;
+		font-family: "new-spirit", serif;
+		font-weight: 600;
+		font-style: normal;
+    margin-top: 4rem;
+	}
+
+
+	

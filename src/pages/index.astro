@@ -1,15 +1,156 @@
 ---
+import IndexCard from "../components/IndexCard.astro";
+import InfoRow from "../components/InfoRow.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/global.css";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="Sakura Festival">
+
+	<section class="info_section">
+
+		<h1>Sakura Festival 2023</h1>
+		<p>Oplev de nyudsprungede kirsebærblomster og dyk ned i den japanske kultur med sjove events og boder.</p>
+
+		<div class="info">
+			<InfoRow title="April 22-23" subtitle="11:00-16:00">
+				<img slot="icon" src="/imgs/calendar.svg" alt="">
+			</InfoRow>
+			<InfoRow title="Langelinie - Kbh K" subtitle="Fri entré">
+				<img slot="icon" src="/imgs/pin.svg" alt="">
+			</InfoRow>
+		</div>
+
+		<div class="sakura_tree_mobile"></div>
+		<div class="sakura_tree_desktop"></div>
+
+	</section>
+
+	<section class= "grid_section">
+		<div class="grid">
+			<IndexCard title="Program" img="program.jpg" link="program"/>
+			<IndexCard title="Bliv Frivillig" img="bliv_frivillig.jpg" link="bliv_frivillig"/>
+			<IndexCard title="Find Vej" img="find_vej.jpg" link="find_vej"/>
+			<IndexCard title="Om Sakura" img="om_os.jpg" link="om_os"/>
+		</div>
+	</section>
+
+	<section class="sponsor_section">
+		<h2>Mød vores sponsorer</h2>
+		<div>
+			<img src="" alt="">
+			<img src="" alt="">
+		</div>
+	</section>
+
+	<img src="" alt="Sakura Festival Logo">
+
+</MainLayout>
+
+
+
+<style>
+
+
+	.info img {
+		width: 2rem;
+		margin-right: 1rem;
+	}
+
+	h1 {
+		max-width: 10rem;
+	}
+
+	.sakura_tree_desktop {
+		display: none;
+	}
+
+	section {
+		margin: 2rem;
+	}
+
+	.info_section {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.info_section h1 {
+
+		margin-bottom: 2rem;
+	}
+
+	.sakura_tree_mobile {
+		position: absolute;
+		width: 345px;
+		height: 320px;
+		right: 0px;
+		top: 0px;
+		background-image: url("/imgs/sakura_mobile.png");
+		background-size: cover;
+		background-position: center;
+		z-index: -1;
+	}
+
+	.grid {
+		display: grid;
+		grid-gap: 1rem;
+		margin: 0 auto;
+	}
+
+	.info {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		margin: 2rem 0;
+	}
+
+	@media (min-width: 760px) {
+		.sakura_tree_desktop {
+			display: block;
+			position: absolute;
+			aspect-ratio: 1/1;
+			width: 40rem;
+			right: 0px;
+			top: -30px;
+			background-image: url("/imgs/sakura_desktop.png");
+			background-size: cover;
+			background-position: center;
+			z-index: -1;
+		}
+		.sakura_tree_mobile {
+			display: none;
+		}
+
+	}
+	
+	@media (min-width: 1500px) {
+		.sakura_tree_desktop {
+			width: 52rem;
+			top: -130px;
+	}
+}
+
+	@media (min-width: 650px) {
+		.info {
+			flex-direction: row;
+			align-items: start;
+			gap: 2rem;
+		}
+
+		.grid {
+			grid-template-columns: 1fr 1fr;
+		}
+
+
+		.info_section p {
+		max-width: 28rem;
+	}
+
+		h1 {
+			max-width: none;
+	
+}
+
+</style>

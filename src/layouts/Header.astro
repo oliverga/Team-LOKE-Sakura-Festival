@@ -1,0 +1,116 @@
+---
+
+---
+<header>
+    <div class="first_list">
+        <img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo">
+        <p class="hide">Sakura Festival</p>
+    </div>
+
+    <nav class="hide">
+        <ul class="nav_list">
+            <li>
+                <a href="program">Program</a>
+            </li>
+            <li>
+                <a href="bliv_frivillig">Bliv Frivillig</a>
+            </li>
+            <li>
+                <a href="om_os">Om Sakura</a>
+            </li>
+            <li>
+                <a href="find_vej">Find Vej</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="hide">
+        <div class="last_list">
+            <a href="min_liste">Min Liste</a>
+            <p>DK/ENG</p>
+        </div>
+
+    </div>
+</header>
+
+
+<style>
+
+    .hide {
+        display: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .sakura-logo {
+        width: 2.5rem;
+        aspect-ratio: 1/1;
+        margin: 0.5rem 0.5rem;
+    }
+
+    header {
+        display: block;
+        text-decoration: none;
+        background-color: none;
+        white-space: nowrap;
+    }
+
+    .first_list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+    }
+
+    .first_list p {
+		font-family: "new-spirit", serif;
+		font-weight: 500;
+        margin: 0;
+        margin-left: 0.5rem;
+    }
+
+    .nav_list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        gap: 2rem;
+    }
+
+    .last_list {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        gap: 2rem;
+    }
+
+    @media (min-width: 650px) {
+
+        .hide {
+            display: block;
+        }
+
+        header {
+            background-color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0.5rem 0;
+            margin: 0;
+            text-decoration: none;
+            background-color: none;
+        }
+    }
+</style>
