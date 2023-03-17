@@ -4,6 +4,7 @@ import "../styles/global.css";
 
 import { createClient } from '@supabase/supabase-js';
 import EventList from "../components/EventList.astro";
+import FilterBtn from "../components/Filter_btn.astro";
 
 const supabaseUrl = 'https://ytbpkmmrhxeuawuggktn.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0YnBrbW1yaHhldWF3dWdna3RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3ODY5NDEsImV4cCI6MTk5NDM2Mjk0MX0.C7HKtjFf03nvDpJTjYOtRlR-1nQ18yozjpLSTlaRKO8';
@@ -44,7 +45,7 @@ const categories = Object.keys(categorizedEvents);
 
 </script>
 
-<MainLayout>
+<MainLayout title="Program">
   <section>
     <h1>Program</h1>
     <p>Hent pdf’en for hele programmet her</p>
@@ -54,7 +55,7 @@ const categories = Object.keys(categorizedEvents);
       <ul>
         {categories.map (category => (
           <li>
-            <a href={`#${category}`}>{category}</a>
+            <FilterBtn category={category} />
           </li>
         ))}
       </ul>
@@ -64,6 +65,25 @@ const categories = Object.keys(categorizedEvents);
     <h2>Søndag</h2>
     <EventList date="2023-04-23" client:load/>
   </section>
-
-
 </MainLayout>
+
+<style>
+  h1 {
+    margin-bottom: 2rem;
+  }
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 1rem;
+    overflow-x: scroll;
+    margin-bottom: 2rem;
+
+  }
+  section {
+    margin-bottom: 2rem;
+  }
+</style>
