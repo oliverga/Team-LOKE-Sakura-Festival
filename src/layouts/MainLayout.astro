@@ -4,38 +4,54 @@ import Header from "./Header.astro";
 ---
 
 <html lang="da">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="stylesheet" href="https://use.typekit.net/ljv0dkm.css">
-		<title>{Astro.props.title}</title>
-	</head>
-	<body>
-        <Header />
-		<main>
-			<slot />
-		</main>
-        <Footer />
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="stylesheet" href="https://use.typekit.net/ljv0dkm.css" />
+    <title>{Astro.props.title}</title>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <div class="flex">
+      <img class="sakura-logo" src="imgs/logo.svg" alt="Sakura Festival Logo" />
+    </div>
+
+    <Footer />
+  </body>
 </html>
 
 <style>
-	main {
-		max-width: 800px;
-		margin-inline: auto;
-		padding-inline: 1.5rem;
-	}
+  main {
+    max-width: 800px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
 
-	body::before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		background: linear-gradient(170deg, #bc002c7c -50%, rgba(255, 255, 255, 0) 20%);
-	}
+  .flex {
+    display: flex;
+    margin: 3rem auto;
+	justify-content: center;
+  }
+
+  .sakura-logo {
+    width: 2.5rem;
+    aspect-ratio: 1/1;
+    margin: 0.5rem 0.5rem;
+  }
+
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(170deg, #bc002c7c -50%, rgba(255, 255, 255, 0) 20%);
+  }
 </style>
