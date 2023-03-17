@@ -39,18 +39,12 @@ const categorizedEvents = filterEventsByCategories(events);
 const categories = Object.keys(categorizedEvents);
 ---
 
-<script define:vars={{ categories }}>
-
-	console.log(categories);
-
-</script>
-
 <MainLayout title="Program">
   <section>
     <h1>Program</h1>
     <p>Hent pdf’en for hele programmet her</p>
   </section>
-  <section>
+
     <div>
       <ul>
         {categories.map (category => (
@@ -61,20 +55,27 @@ const categories = Object.keys(categorizedEvents);
       </ul>
     </div>
     <h2>Lørdag</h2>
-    <EventList date="2023-04-22" client:load/>
+      <EventList date="2023-04-22"/>
+
     <h2>Søndag</h2>
-    <EventList date="2023-04-23" client:load/>
-  </section>
+      <EventList date="2023-04-23"/>
+
+
 </MainLayout>
 
 <style>
   h1 {
     margin-bottom: 2rem;
   }
+
+  h2 {
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+    }
   ul {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -85,5 +86,8 @@ const categories = Object.keys(categorizedEvents);
   }
   section {
     margin-bottom: 2rem;
+    max-width: 800px;
+		margin-inline: auto;
   }
+  
 </style>

@@ -1,118 +1,212 @@
 ---
-
 ---
+
+<script>
+  const hamburger = document.querySelector(".hamburger");
+  const navList = document.querySelector(".nav_list");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navList.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".nav_link").forEach((n) =>
+    n.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navList.classList.remove("active");
+    })
+  );
+</script>
+
 <header>
-    <div class="first_list">
-        <a href="/"><img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo"></a>
-        <a href="/"><p class="hide">Sakura Festival</p></a>
+  <div class="first_list">
+    <a href="/"><img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo" /></a>
+    <a href="/"><p class="hide">Sakura Festival</p></a>
+  </div>
+
+  <div class="hamburger">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+
+  <nav>
+    <ul class="nav_list">
+      <li>
+        <a href="program" class="nav_link">Program</a>
+      </li>
+      <li>
+        <a href="bliv_frivillig" class="nav_link">Bliv Frivillig</a>
+      </li>
+      <li>
+        <a href="om_os" class="nav_link">Om Sakura</a>
+      </li>
+      <li>
+        <a href="find_vej" class="nav_link">Find Vej</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div>
+    <div class="last_list">
+      <a href="min_liste">Min Liste</a>
+      <p>DK/ENG</p>
     </div>
-
-    <nav class="hide">
-        <ul class="nav_list">
-            <li>
-                <a href="program">Program</a>
-            </li>
-            <li>
-                <a href="bliv_frivillig">Bliv Frivillig</a>
-            </li>
-            <li>
-                <a href="om_os">Om Sakura</a>
-            </li>
-            <li>
-                <a href="find_vej">Find Vej</a>
-            </li>
-        </ul>
-    </nav>
-
-    <div class="hide">
-        <div class="last_list">
-            <a href="min_liste">Min Liste</a>
-            <p><b>DK</b>/ENG</p>
-        </div>
-
-    </div>
+  </div>
 </header>
 
-
 <style>
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav_list{
+    position: fixed;
+    display: flex;
+    gap: 4rem;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+
+  }
+
+  .last_list{
+    position: fixed;
+    display: flex;
+    gap: 4rem;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+  }
+  
+
+  .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto; /*5px top+bottom auto left+right*/
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+    transition: transform 0.5s;
+    font-size: 24px;
+  }
+
+  a:hover {
+    transform: scale(1.02);
+  }
+
+  .sakura-logo {
+    width: 2.5rem;
+    aspect-ratio: 1/1;
+    margin: 0.5rem 0.5rem;
+  }
+
+  header {
+    display: block;
+    text-decoration: none;
+    background-color: none;
+    white-space: nowrap;
+  }
+
+  .first_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .first_list p {
+    font-family: "new-spirit", serif;
+    font-weight: 500;
+    margin: 0;
+    margin-left: 0.5rem;
+  }
+
+
+  @media (min-width: 650px) {
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
 
     .hide {
-        display: none;
+      display: block;
     }
-
-    a {
-        text-decoration: none;
-        color: black;
-        transition: transform 0.5s;
-    }
-
-    a:hover {
-        transform: scale(1.02);
-    }
-
 
     header {
-        display: block;
-        text-decoration: none;
-        background-color: none;
+      background-color: white;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.5rem 0;
+      margin: 0;
+      border: 1px solid rgba(225, 164, 204, 0.183);
+
+      box-shadow: 0 0 10px rgba(225, 164, 204, 0.2);
+      text-decoration: none;
+      background-color: none;
     }
 
-    .first_list {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0;
-        margin: 0;
-    }
-
-    .first_list p {
-		font-family: "new-spirit", serif;
-		font-weight: 500;
-        margin: 0;
-        margin-left: 0.5rem;
-    }
-
-    .nav_list {
-        list-style-type: none;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0;
-        margin: 0;
-        gap: 2rem;
+    .nav_list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
     }
 
     .last_list {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0;
-        margin: 0;
-        gap: 2rem;
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+    position: relative;
+    width: 100%;
+    
+  }
 
-    @media (min-width: 650px) {
-
-        .hide {
-            display: block;
-        }
-
-        header {
-            background-color: white;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            padding: 0.5rem 0;
-            margin: 0;
-            border: 1px solid rgba(225, 164, 204, 0.183);
-
-            box-shadow: 0 0 10px rgba(225, 164, 204, 0.2); 
-            text-decoration: none;
-            background-color: none;
-        }
-    }
+    a {
+    font-size: 16px;
+  }
+  }
 </style>
