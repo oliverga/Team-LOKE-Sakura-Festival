@@ -1,0 +1,88 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/global.css";
+---
+
+<MainLayout>
+  <h1>Om Sakura Festival</h1>
+  <p>
+    Udvalget for Copenhagen Sakura Festival blev oprettet i februar 2008 for at arrangere det kulturelle event Copenhagen Sakura Festival hvert år i Danmark. Eventet er skabt i samarbejde med den Japanske Ambassade i Danmark, Københavns kommune og andre japansk-relaterede
+    kulturelle og private organisationer i Danmark.
+  </p>
+
+  <h2>Seiichi Takakis Generøse Donation</h2>
+  <div class="grid">
+    <p>
+      Ideen kom efter præsidenten af Andersen Institute of Bread & Life, Hr. Seiichi Takakis ædle donation af 200 kirsebærblomsttræer. Disse kom fra kompagniet Hiroshima City og dets ansatte. De donerede træer blev plantet ved Langelinie Park hvor Copenhagen Sakura Festival
+      bliver afholdt hvert år. Denne tradition er taget fra Japan, hvor det japanske folk hvert år fejrer blomsternes udsprining med deres venner, familie og kollegaer.
+    </p>
+    <img src="../public/imgs/om-os-blomster.webp" alt="Billede fra Sakura Festival" />
+  </div>
+
+  <div class="grid">
+    <p class="order">Hr. Takaki er æreskonsul i Danmark og han blev udnævnt til H. C. Andersens ambassadør i anledning af 200-årsdagen for H.C. Andersens fødselsdag i 2005. De donerede træer blev plantet ved Langelinje Park.</p>
+    <img src="../public/imgs/sakura-blomster-om-os.webp" alt="Billede af Emmas Sakura blomster" />
+  </div>
+
+  <h2>Sammenkomst og Fællesskab</h2>
+  <div class="grid">
+    <p>
+      I Japan fejrer det japanske folk hvert år Kirsebærblomsternes udspringning, og næsten alle tager til parkerne for at nyde det smukke fænomen i hinandens selskab. Man kan derfor sige, at kirsebærblomsterne hvert år er med til at samle mennesker fra alle steder i livet og
+      nyde deres smukke farver sammen. Dette er også komitéens vigtigste og mest grundlæggende mål med Copenhagen Sakura Festival.
+    </p>
+    <img src="../public/imgs/leder-japans-ambassade.webp" alt="Billede af Præsidenten or Japans Ambassade" />
+  </div>
+  <p>
+    Komitéen har den store ære at have formanden H.E, ambasørren af Japan i Danmark og Overborgmesteren af København, Sophie Hæstorp Andersen. Udvalget består af repræsentanter for erhvervs-, kultur- og private organisationer med tilknytning til Japan, Københavns Kommune og den
+    japanske ambassade.
+  </p>
+  <div class="button">
+    <a href="">Se billeder fra tidligere år</a>
+  </div>
+</MainLayout>
+
+<style>
+  h2 {
+    font-weight: 500;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+  p,
+  img {
+    margin-bottom: 2rem;
+  }
+
+  .button a {
+    color: #ffff;
+    background-color: #cb567a;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    border-radius: 500px;
+  }
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 650px) {
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 1rem;
+    }
+
+    .order {
+      order: 2;
+      margin-top: 2rem;
+    }
+  }
+</style>
