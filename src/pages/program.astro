@@ -36,8 +36,6 @@ function filterEventsByCategories(data) {
 }
 const categorizedEvents = filterEventsByCategories(data);
 
-console.log(categorizedEvents)
-
 const categories = Object.keys(categorizedEvents);
 
 
@@ -73,7 +71,7 @@ const categories = Object.keys(categorizedEvents);
       <EventList date="2023-04-22" events={data} category="Musik"/>
 
     <h2>Søndag</h2>
-      <EventList date="2023-04-23" events={data} category="Kampsport"/>
+      <EventList date="2023-04-23" events={data} category="Opvisning"/>
 </MainLayout>
 
 <style>
