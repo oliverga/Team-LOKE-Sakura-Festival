@@ -116,10 +116,15 @@ import "../styles/global.css";
     width: 92vw;
     overflow-x: scroll;
     gap: 2rem;
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   }
   .sponsor_scroll img {
     width: 200px;
   }
+.sponsor_scroll::-webkit-scrollbar {
+  display: none;
+}
 
   @media (min-width: 760px) {
     .sakura_tree_desktop {
