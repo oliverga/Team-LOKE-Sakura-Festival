@@ -4,45 +4,7 @@ import InfoRow from "../components/InfoRow.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import "../styles/global.css";
 
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = 'https://ytbpkmmrhxeuawuggktn.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0YnBrbW1yaHhldWF3dWdna3RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3ODY5NDEsImV4cCI6MTk5NDM2Mjk0MX0.C7HKtjFf03nvDpJTjYOtRlR-1nQ18yozjpLSTlaRKO8';
-
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-const response = await supabase
-  .from('festival_events')
-  .select('*')
-  .order('date', { ascending: true })
-  .order ('start_time', { ascending: true });
-
-const events = response.data;
-
-function filterEventsByCategories(events) {
-  const filteredEvents = {};
-
-  events.forEach(event => {
-    event.categories.forEach(category => {
-      if (!filteredEvents.hasOwnProperty(category)) {
-        filteredEvents[category] = [];
-      }
-      filteredEvents[category].push(event);
-    });
-  });
-
-  return filteredEvents;
-}
-
-const categorizedEvents = filterEventsByCategories(events);
- 
 ---
-
-<script define:vars={{ categorizedEvents }}>
-
-	console.log(categorizedEvents.Kampsport.concat(categorizedEvents.Kampsport));
-
-</script>
 
 <MainLayout title="Sakura Festival">
 
