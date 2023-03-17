@@ -1,0 +1,31 @@
+---
+import "../styles/global.css";
+---
+
+<a href={"/program?category=" + Astro.props.category}>
+    <button>
+      {Astro.props.category}
+    </button>
+  </a>
+
+
+<style>
+    button {
+        background-color: #DFB1B6; /* Green */
+        border: none;
+        color: #101010;
+        padding: 0.6rem 1.2rem;
+        border-radius: 500px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #CFA0A5;
+    }
+
+</style>
