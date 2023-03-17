@@ -17,12 +17,13 @@ const response = await supabase
   .order('date', { ascending: true })
   .order ('start_time', { ascending: true });
 
-const events = response.data;
+// response data as astro props
+const data = response.data
 
-function filterEventsByCategories(events) {
+function filterEventsByCategories(data) {
   const filteredEvents = {};
 
-  events.forEach(event => {
+  data.forEach(event => {
     event.categories.forEach(category => {
       if (!filteredEvents.hasOwnProperty(category)) {
         filteredEvents[category] = [];
@@ -33,16 +34,30 @@ function filterEventsByCategories(events) {
 
   return filteredEvents;
 }
+const categorizedEvents = filterEventsByCategories(data);
 
-const categorizedEvents = filterEventsByCategories(events);
+console.log(categorizedEvents)
 
 const categories = Object.keys(categorizedEvents);
+
+
+
 ---
+
+<script>
+  // get url params
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedCategory = urlParams.get('category');
+
+  console.log(selectedCategory)
+
+  
+</script>
 
 <MainLayout title="Program">
   <section>
     <h1>Program</h1>
-    <p>Hent pdf’en for hele programmet her</p>
+    <a href="/">Hent pdf'en for hele programmet <b>her</b></a>
   </section>
 
     <div>
@@ -55,12 +70,10 @@ const categories = Object.keys(categorizedEvents);
       </ul>
     </div>
     <h2>Lørdag</h2>
-      <EventList date="2023-04-22"/>
+      <EventList date="2023-04-22" events={data} category="Musik"/>
 
     <h2>Søndag</h2>
-      <EventList date="2023-04-23"/>
-
-
+      <EventList date="2023-04-23" events={data} category="Kampsport"/>
 </MainLayout>
 
 <style>
@@ -94,4 +107,8 @@ const categories = Object.keys(categorizedEvents);
     margin-block: 1rem;
   }
   
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
 </style>

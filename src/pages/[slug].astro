@@ -1,6 +1,9 @@
 ---
 import { createClient } from '@supabase/supabase-js';
+import BackBtn from '../components/Back_btn.astro';
+import FilterBtn from '../components/Filter_btn.astro';
 import MainLayout from '../layouts/MainLayout.astro';
+import "../styles/global.css";
 
 export async function getStaticPaths() {
     const supabaseUrl = 'https://ytbpkmmrhxeuawuggktn.supabase.co';
@@ -20,14 +23,151 @@ export async function getStaticPaths() {
 }
 
 const { event } = Astro.props;
+const { date, start_time, end_time, categories} = event;
+
+
+const weekday = new Date(date).toLocaleDateString('da-DK', { weekday: 'long' });
+
+const weekdayCapitalized = weekday.charAt(0).toUpperCase() + weekday.slice(1);
+
+const startHour = start_time.split(":")[0];
+const startMinute = start_time.split(":")[1];
+
+const endHour = end_time.split(":")[0];
+const endMinute = end_time.split(":")[1];
+
+const duration = (startHour + ":" + startMinute + " - " + endHour + ":" + endMinute);
 
 ---
 
 <MainLayout>
-    <h1>{event.name}</h1>
-    <p>{event.description}</p>
-    <p>{event.date}</p>
-    <p>{event.start_time}</p>
-    <p>{event.end_time}</p>
-    <p>{event.location}</p>
+    <div class="back-button">
+        <BackBtn />
+    </div>
+  
+    <div class="flex_row">
+        <div class="flex_left">
+            <img src={ "/imgs/" + event.img + ".webp" } alt={ event.name }/>
+            <h2>Om eventet</h2>
+            <p>{event.description}</p>
+        </div>
+        <div class="flex_right">
+            <h1 class="event">{event.name}</h1>
+            <p class="host">Event af: {event.host}</p>
+            <ul class="categories">
+                {categories.map (category => (
+                  <li>
+                    <FilterBtn category={category} />
+                  </li>
+                ))}
+              </ul>
+              <div class="event_info time">
+                <img src="/imgs/calendar.svg" alt="Calendar Icon" class="calendar">
+                <div>
+                  <p>{weekdayCapitalized}</p>
+                  <p>{duration}</p>
+                </div>
+              </div>
+          
+              <div class="event_info location">
+                  <img src="/imgs/pin.svg" alt="Pin Icon" class="pin">
+                  <p>
+                    {event.location}
+                  </p>
+              </div>
+        </div>
+    </div>
+
 </MainLayout>
+
+<style>
+
+    .flex_row {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 4rem;
+        margin-top: 3rem;
+    }
+
+    .flex_left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 2rem;
+        max-width: 100%;
+        order: 2;
+    }
+
+    .flex_left img {
+        object-fit: cover;
+
+    }
+
+    .flex_right {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.5rem;
+    overflow-x: scroll;
+    margin-bottom: 2rem;
+  }
+
+  .back-button {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .event_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .event_info p {
+    font-size: 1.2rem;
+  }
+
+.location {
+    transform: translateX(-0.24rem);
+}
+
+.host {
+    transform: translateX(0.18rem)
+}
+.calendar {
+    width: 2rem;
+    height: 2rem;
+  }
+
+.pin {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  @media (min-width: 650px) {
+        .flex_row {
+            flex-direction: row;
+        }
+
+        .flex_left {
+            max-width: 60%;
+            order: 0;
+        }
+    }
+</style>
