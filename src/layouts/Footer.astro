@@ -39,21 +39,20 @@
 <style>
 
     footer {
-        padding: 2rem 3rem;
         background: linear-gradient(161.14deg, rgba(255, 255, 255, 0) -240.87%, rgba(196, 55, 88, 0.71) 83.02%);
-        box-shadow: inset 0px 75px 69px -75px rgba(128, 22, 47, 0.16)
+        box-shadow: inset 0px 75px 69px -75px rgba(128, 22, 47, 0.16);
         height: 300%;
         color: white;
-        padding: 5rem 10rem;
+        padding: 2rem 2rem;
     }
 
     .footer_flex {
+        flex-wrap: wrap;
         display: flex;
         justify-content: space-between;
         gap: 3.5rem;
         max-width: 800px;
         margin: 0 auto;
-        padding-inline: 2rem;
     }
 
     .footer_flex h2 {
@@ -73,5 +72,25 @@
     img {
         mix-blend-mode: luminosity;
     }
+
+    .socials{
+        order: -1;
+    }
     
+    @media (min-width: 650px){
+        .footer_flex {
+        flex-wrap: nowrap;
+        display: flex;
+        justify-content: space-between;
+        gap: 3.5rem;
+        max-width: 800px;
+        margin: 0 auto;
+        padding-inline: 2rem;
+    }
+
+    .socials{
+        order:0;
+    }
+
+    }
 </style>
