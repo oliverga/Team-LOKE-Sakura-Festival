@@ -3,49 +3,61 @@
 import "../styles/global.css"
 ---
 
-<article class="event-card" 
-style={{backgroundImage: `url(/imgs/${Astro.props.img}.webp)`}}>
-  <div class="top-info">
-    <div class="categories">
-      {Astro.props.categories.map((category) => (
-        <a class="category" href={`program.html?category=${category}`}>{category}</a>
-      ))}
-    </div>
-  </div>
-  <h1>
-    <a href={`event.html?id=${Astro.props.id}`} class="title">
-      {Astro.props.name}
-    </a>
-  </h1>
-    <p class="host">
-      Hosted by {Astro.props.host}
-    </p>
-      <a href={`event.html?id=${Astro.props.id}`} class="read-more">Read more</a>
+<article class="event-card" style={{backgroundImage: `url(/imgs/${Astro.props.img}.webp)`}}>
+        <div class="top-info">
+            <div class="categories">
+            {Astro.props.categories.map((category) => (
+                <a class="category" href={`program?category=${category}`}>{category}</a>
+            ))}
+            </div>
+        </div>
+        <h1>
+            <a href={`/${Astro.props.slug}`} class="title">
+            {Astro.props.name}
+            </a>
+        </h1>
+            <p class="host">
+            Hosted by {Astro.props.host}
+            </p>
+            <div class="event_info">
+                <img src="/imgs/calendar_white.svg" alt="">
+                <p>
+                    {Astro.props.date}
+                </p>
+            </div>
+
+            <div class="event_info">
+                <img src="/imgs/pin_white.svg" alt="">
+                <p>
+                    <span>{Astro.props.start_time}</span>
+                    <span> - </span>
+                    <span>{Astro.props.end_time}</span>
+                </p>
+            </div>
 
 </article>
 
 
-<!-- EventCard.astro -->
 <style>
   .event-card {
-    width: 40%;
+    width: 100%;
     min-width: 300px;
     aspect-ratio: 5/4;
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 1rem;
-    margin: 1rem;
     color: white;
     background-size: cover;
-    box-shadow: inset 275px 0px 160px -90px rgba(15, 0, 5, 0.511), inset 0px 50px 85px -73px rgba(16, 16, 16, 0.7), inset 0px -60px 85px -61px rgba(0, 0, 0, 0.7);
+    box-shadow: inset 320px 0px 160px -120px rgba(15, 0, 5, 0.550), inset 0px 50px 85px -73px rgba(16, 16, 16, 0.7), inset 0px -60px 85px -61px rgba(0, 0, 0, 0.7);
     border-radius: 5px;
   }
 
+
   .top-info {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: top;
   }
   
@@ -58,19 +70,27 @@ style={{backgroundImage: `url(/imgs/${Astro.props.img}.webp)`}}>
 
   .category {
     background-color: #DFB1B6;
-    padding: 0.35rem 0.6rem;
+    padding: 0.35rem 0.8rem;
     border-radius: 200px;
     height: fit-content;
     color: #1d1d1d;
+    justify-self: flex-start;
   }
   
   .title {
     font-size: 1.5rem;
     font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Inter', sans-serif;
   }
 
   .host {
     font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .info {
@@ -78,10 +98,24 @@ style={{backgroundImage: `url(/imgs/${Astro.props.img}.webp)`}}>
     align-items: center;
   }
 
+  .event_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .event_info img {
+    width: 1rem;
+    height: 1rem;
+  }
+
   .read-more {
     align-self: flex-end;
     font-weight: normal;
     cursor: pointer;
+    margin: 0;
   }
 
   .like-button {
@@ -96,7 +130,3 @@ style={{backgroundImage: `url(/imgs/${Astro.props.img}.webp)`}}>
   }
 
 </style>
-
-<script>
-
-</script>
