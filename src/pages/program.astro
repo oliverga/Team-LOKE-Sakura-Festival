@@ -3,6 +3,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 import "../styles/global.css";
 
 import { createClient } from '@supabase/supabase-js';
+import EventList from "../components/EventList.astro";
 
 const supabaseUrl = 'https://ytbpkmmrhxeuawuggktn.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0YnBrbW1yaHhldWF3dWdna3RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3ODY5NDEsImV4cCI6MTk5NDM2Mjk0MX0.C7HKtjFf03nvDpJTjYOtRlR-1nQ18yozjpLSTlaRKO8';
@@ -33,14 +34,36 @@ function filterEventsByCategories(events) {
 }
 
 const categorizedEvents = filterEventsByCategories(events);
+
+const categories = Object.keys(categorizedEvents);
 ---
 
-<script define:vars={{ categorizedEvents }}>
+<script define:vars={{ categories }}>
 
-	console.log(categorizedEvents.Kampsport);
+	console.log(categories);
 
 </script>
 
 <MainLayout>
-  <h1>Program</h1>
+  <section>
+    <h1>Program</h1>
+    <p>Hent pdf’en for hele programmet her</p>
+  </section>
+  <section>
+    <div>
+      <ul>
+        {categories.map (category => (
+          <li>
+            <a href={`#${category}`}>{category}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <h2>Lørdag</h2>
+    <EventList date="2023-04-22" client:load/>
+    <h2>Søndag</h2>
+    <EventList date="2023-04-23" client:load/>
+  </section>
+
+
 </MainLayout>
