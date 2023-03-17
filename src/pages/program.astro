@@ -46,7 +46,7 @@ const categories = Object.keys(categorizedEvents);
   </section>
 
     <div>
-      <ul>
+      <ul class="categories">
         {categories.map (category => (
           <li>
             <FilterBtn category={category} />
@@ -65,7 +65,7 @@ const categories = Object.keys(categorizedEvents);
 
 <style>
   h1 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   h2 {
@@ -88,6 +88,10 @@ const categories = Object.keys(categorizedEvents);
     margin-bottom: 2rem;
     max-width: 800px;
 		margin-inline: auto;
+  }
+
+  .categories {
+    margin-block: 1rem;
   }
   
 </style>
