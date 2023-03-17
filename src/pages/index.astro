@@ -125,14 +125,21 @@ import "../styles/global.css";
   display: none;
 }
 
-  @media (min-width: 760px) {
+
+@media (min-width: 1500px) {
+    .sakura_tree_desktop {
+      width: 54rem;
+      top: -100px;
+    }
+  }
+  @media (min-width: 840px) {
     .sakura_tree_desktop {
       display: block;
       position: absolute;
       aspect-ratio: 1/1;
-      width: 40rem;
+      width: 44rem;
       right: 0px;
-      top: -30px;
+      top: -38px;
       background-image: url("/imgs/sakura_desktop.png");
       background-size: cover;
       background-position: center;
@@ -140,13 +147,6 @@ import "../styles/global.css";
     }
     .sakura_tree_mobile {
       display: none;
-    }
-  }
-
-  @media (min-width: 1500px) {
-    .sakura_tree_desktop {
-      width: 52rem;
-      top: -130px;
     }
   }
 
@@ -168,18 +168,22 @@ import "../styles/global.css";
     h1 {
       max-width: none;
     }
-.sponsor_section h2{
-	text-align: center;
-	margin-block: 4rem 3rem;
-}
+
+    p {
+      margin-block: 1rem;
+    }
+    .sponsor_section h2{
+      text-align: center;
+      margin-block: 4rem 3rem;
+    }
 	.sponsor_scroll div{
     display: flex;
     gap: 2rem;
-	width: auto;
+	  width: auto;
   }
 
   .sponsor_scroll img {
-width: 100%;
+    width: 100%;
   }
 	
   }

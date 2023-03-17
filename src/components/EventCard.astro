@@ -1,41 +1,61 @@
 ---
 // import LikeButton from "./LikeButton.astro";
 import "../styles/global.css"
+
+const date = Astro.props.date;
+
+const weekday = new Date(date).toLocaleDateString('da-DK', { weekday: 'long' });
+
+const weekdayCapitalized = weekday.charAt(0).toUpperCase() + weekday.slice(1);
+
+const startTime = Astro.props.start_time;
+const endTime = Astro.props.end_time;
+
+const startHour = startTime.split(":")[0];
+const startMinute = startTime.split(":")[1];
+
+const endHour = endTime.split(":")[0];
+const endMinute = endTime.split(":")[1];
+
+const duration = (startHour + ":" + startMinute + " - " + endHour + ":" + endMinute);
 ---
 
 <article class="event-card" style={{backgroundImage: `url(/imgs/${Astro.props.img}.webp)`}}>
-        <div class="top-info">
-            <div class="categories">
-            {Astro.props.categories.map((category) => (
-                <a class="category" href={`program?category=${category}`}>{category}</a>
-            ))}
-            </div>
-        </div>
-        <h1>
-            <a href={`/${Astro.props.slug}`} class="title">
-            {Astro.props.name}
-            </a>
-        </h1>
-            <p class="host">
-            Hosted by {Astro.props.host}
-            </p>
-            <div class="event_info">
-                <img src="/imgs/calendar_white.svg" alt="">
-                <p>
-                    {Astro.props.date}
-                </p>
-            </div>
+  <div class="top-info">
+      <div class="categories">
+      {Astro.props.categories.map((category) => (
+          <a class="category" href={`program?category=${category}`}>{category}</a>
+      ))}
+      </div>
+  </div>
+  <div class="card_stuff">
+    <h1>
+      <a href={`/${Astro.props.slug}`} class="title">
+      {Astro.props.name}
+      </a>
+    </h1>
+    <p class="host">Hosted by {Astro.props.host}</p>
+    <div class="event_info time">
+      <img src="/imgs/calendar_white.svg" alt="Calendar Icon" class="calendar">
+      <div>
+        <p>{weekdayCapitalized}</p>
+        <p>{duration}</p>
+      </div>
+    </div>
 
-            <div class="event_info">
-                <img src="/imgs/pin_white.svg" alt="">
-                <p>
-                    <span>{Astro.props.start_time}</span>
-                    <span> - </span>
-                    <span>{Astro.props.end_time}</span>
-                </p>
-            </div>
+    <div class="event_info location">
+        <img src="/imgs/pin_white.svg" alt="Pin Icon" class="pin">
+      <p>
+        {Astro.props.location}
+      </p>
+    </div>
+    <div class="read_more">
+      <a href={`/${Astro.props.slug}`}>Læs mere</a>
+    </div>
 
+  </div>
 </article>
+
 
 
 <style>
@@ -46,7 +66,7 @@ import "../styles/global.css"
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
     padding: 1rem;
     color: white;
     background-size: cover;
@@ -54,16 +74,27 @@ import "../styles/global.css"
     border-radius: 5px;
   }
 
-
   .top-info {
     display: flex;
     justify-content: flex-start;
     align-items: top;
   }
+
+  .card_stuff {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 0.5rem;
+  }
+
+  h1 {
+    margin-top: 1rem;
+  }
   
   .categories {
     display: flex;
     flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 0.5rem;
     font-size: 0.8rem;
   }
@@ -74,7 +105,6 @@ import "../styles/global.css"
     border-radius: 200px;
     height: fit-content;
     color: #1d1d1d;
-    justify-self: flex-start;
   }
   
   .title {
@@ -91,6 +121,7 @@ import "../styles/global.css"
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 0.5rem;
   }
 
   .info {
@@ -102,31 +133,43 @@ import "../styles/global.css"
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 0.8rem;
+
+  }
+
+  .read_more {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
     gap: 0.5rem;
-    font-size: 0.8rem;
+
   }
 
-  .event_info img {
-    width: 1rem;
-    height: 1rem;
-  }
-
-  .read-more {
+  .read_more a {
     align-self: flex-end;
     font-weight: normal;
     cursor: pointer;
     margin: 0;
   }
 
-  .like-button {
-    position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-  }
+.location {
+  transform: translateX(-0.15rem);
+}
 
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  .calendar {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .pin {
+    width: 1.8rem;
+    height: 1.8rem;
   }
 
 </style>

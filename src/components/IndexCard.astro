@@ -3,7 +3,7 @@
 ---
 
 <a href={Astro.props.link} style={{backgroundImage: `url(/imgs/${Astro.props.img})`}} class="card">
-    <h2>
+    <h2 class="card_title">
         {Astro.props.title}
     </h2>
 </a>
@@ -37,14 +37,18 @@
     .card:hover h2 {
         transform: scale(1.04);
         filter: drop-shadow(0 0 1rem rgba(0, 0, 0, 0.617))
-        font-weight: 200;
     }
     
     h2 {
         text-align: center;
         font-weight: bold;
-        font-size: 2rem;
         transition: 0.5s;
+    }
+
+    .card_title {
+        font-size: 2rem;
+        font-weight: 600;
+
     }
 
 </style>
