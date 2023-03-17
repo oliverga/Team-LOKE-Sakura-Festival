@@ -1,0 +1,34 @@
+---
+import Header from "../layouts/Header.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/global.css";
+---
+
+<MainLayout title="Find Vej">
+  <h1>Find Vej</h1>
+  <p>
+    Copenhagen Sakura festival finder sted ved Langelinie Park som ligger ved siden af Den Lille Havfrue. Langelinie Park har kort afstand til centrum, så det er nemt at kommer dertil. Selvom der er parkeringsmuligheder i nærheden, anbefaler vi at man går til fods til festivalen
+    da man kan opleve færre ledige parkeringspladser i weekenderne. Vi har samlet mulighederne nedenfor så du nemt kan få et overblik over hvordan du kan finde vej til festivalen.
+  </p>
+  <img src="../public/imgs/langelinie_pavillion.webp" alt="Langelinie Pavillion kort" />
+  <h2>Fra Østerport station</h2>
+  <img src="../public/imgs/google_maps_find_vej.webp" alt="Google Maps navigation til Sakura Festival" />
+</MainLayout>
+
+<style>
+  h2 {
+    font-weight: 500;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+  p,
+  img {
+    margin-bottom: 2rem;
+  }
+</style>
