@@ -3,9 +3,14 @@ import EventCard from './EventCard.astro';
 
 let {events, category, date} = Astro.props;
 
-let filteredEvents = events.filter(event => event.date.includes(date) && event.categories.includes(category));
----
+let filteredEvents;
 
+if (category === '') {
+  filteredEvents = events.filter(event => event.date.includes(date));
+} else {
+  filteredEvents = events.filter(event => event.date.includes(date) && event.categories.includes(category));
+}
+---
 <div class="grid">
 
     {filteredEvents.map(event => {

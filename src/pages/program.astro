@@ -35,22 +35,18 @@ function filterEventsByCategories(data) {
   return filteredEvents;
 }
 const categorizedEvents = filterEventsByCategories(data);
-
 const categories = Object.keys(categorizedEvents);
 
+const paths = categories.map(category => {
+        return {
+            params: {
+                category: category,
+            },
+        };
+    });
 
-
+console.log(paths);
 ---
-
-<script>
-  // get url params
-  const urlParams = new URLSearchParams(window.location.search);
-  const selectedCategory = urlParams.get('category');
-
-  console.log(selectedCategory)
-
-  
-</script>
 
 <MainLayout title="Program">
   <section>
@@ -68,10 +64,10 @@ const categories = Object.keys(categorizedEvents);
       </ul>
     </div>
     <h2>Lørdag</h2>
-      <EventList date="2023-04-22" events={data} category="Musik"/>
+      <EventList date="2023-04-22" events={data} category="" class="eventlist"/>
 
     <h2>Søndag</h2>
-      <EventList date="2023-04-23" events={data} category="Opvisning"/>
+      <EventList date="2023-04-23" events={data} category="" class="eventlist"/>
 </MainLayout>
 
 <style>

@@ -24,7 +24,7 @@ const duration = (startHour + ":" + startMinute + " - " + endHour + ":" + endMin
   <div class="top-info">
       <div class="categories">
       {Astro.props.categories.map((category) => (
-          <a class="category" href={`/program?category=${category}`}>{category}</a>
+          <a class="category" href={`/program/${category}`}>{category}</a>
       ))}
       </div>
   </div>
