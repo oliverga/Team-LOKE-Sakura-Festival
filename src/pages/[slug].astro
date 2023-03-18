@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 import BackBtn from '../components/Back_btn.astro';
 import FilterBtn from '../components/Filter_btn.astro';
 import MainLayout from '../layouts/MainLayout.astro';
+import ListBtn from '../components/List_btn.astro';
 import "../styles/global.css";
 
 export async function getStaticPaths() {
@@ -75,6 +76,7 @@ const duration = (startHour + ":" + startMinute + " - " + endHour + ":" + endMin
                     {event.location}
                   </p>
               </div>
+              <ListBtn />
         </div>
     </div>
 
