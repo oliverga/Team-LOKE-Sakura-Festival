@@ -5,7 +5,7 @@ let {events, category, date} = Astro.props;
 
 let filteredEvents;
 
-if (category === 'All') {
+if (category === 'Alle') {
   filteredEvents = events.filter(event => event.date.includes(date));
 } else {
   filteredEvents = events.filter(event => event.date.includes(date) && event.categories.includes(category));
