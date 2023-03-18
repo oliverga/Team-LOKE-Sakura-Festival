@@ -6,8 +6,6 @@ import { createClient } from '@supabase/supabase-js';
 import EventList from "../../components/EventList.astro";
 import FilterBtn from "../../components/Filter_btn.astro";
 
-
-
 export async function getStaticPaths() {
     const supabaseUrl = 'https://ytbpkmmrhxeuawuggktn.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0YnBrbW1yaHhldWF3dWdna3RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3ODY5NDEsImV4cCI6MTk5NDM2Mjk0MX0.C7HKtjFf03nvDpJTjYOtRlR-1nQ18yozjpLSTlaRKO8';
@@ -40,14 +38,20 @@ export async function getStaticPaths() {
     const paths = categories.map(category => {
         return {
             params: {
-                category: category,
+                category: category, 
             },
         };
     });
 
+    // add "category: all" to the paths array
+    paths.push({
+        params: {
+            category: 'All',
+        },
+    });
+
     return paths; // Return the 'paths' array directly
 }
-
 
 const supabaseUrl = 'https://ytbpkmmrhxeuawuggktn.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0YnBrbW1yaHhldWF3dWdna3RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3ODY5NDEsImV4cCI6MTk5NDM2Mjk0MX0.C7HKtjFf03nvDpJTjYOtRlR-1nQ18yozjpLSTlaRKO8';
@@ -81,8 +85,6 @@ const categorizedEvents = filterEventsByCategories(data);
 const categories = Object.keys(categorizedEvents);
 
 const { category } = Astro.params;
-
-console.log(category)
 
 
 ---
