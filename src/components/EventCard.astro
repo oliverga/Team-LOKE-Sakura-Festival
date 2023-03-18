@@ -22,7 +22,8 @@ const duration = (startHour + ":" + startMinute + " - " + endHour + ":" + endMin
 ---
 
 <article class="event-card" style={{backgroundImage: `url(/imgs/${Astro.props.img}.webp)`}}>
-  <div class="top-info">
+
+    <div class="top-info">
       <div class="categories">
       {Astro.props.categories.map((category) => (
           <a class="category" href={`/program/${category}`}>{category}</a>
@@ -54,7 +55,6 @@ const duration = (startHour + ":" + startMinute + " - " + endHour + ":" + endMin
     <div class="read_more">
       <a href={`/${Astro.props.slug}`}>Læs mere</a>
     </div>
-
   </div>
 </article>
 
@@ -74,6 +74,11 @@ const duration = (startHour + ":" + startMinute + " - " + endHour + ":" + endMin
     background-size: cover;
     box-shadow: inset 380px 0px 240px -120px rgba(15, 0, 5, 0.700), inset 0px 50px 85px -73px rgba(16, 16, 16, 0.7), inset 0px -60px 85px -61px rgba(0, 0, 0, 0.7);
     border-radius: 5px;
+    transition: scale 0.5s ease;
+  }
+
+  .event-card:hover {
+   scale: 1.02;
   }
 
   .top-info {
