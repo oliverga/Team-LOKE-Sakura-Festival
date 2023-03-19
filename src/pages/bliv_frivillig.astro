@@ -18,7 +18,7 @@ import "../styles/global.css";
       Af sikkerhedsmæssige årsager kan du kun tilmelde dig som frivillig når du er over 18 år. Derudover skal vi bruge en straffeattest fra dig. Der er mange opgaver der skal fordeles så det er muligt at du kan arbejde i en afdeling som interesserer
       dig!
     </p>
-    <img src="../public/imgs/frivillige.webp" alt="Frivillige til Sakura Festival" />
+    <img src="../public/imgs/koto_and_shakuhachi_workshop.webp" alt="Frivillige til Sakura Festival" />
   </div>
 
   <h2>Udfyld formularen nedenfor</h2>
@@ -104,6 +104,12 @@ import "../styles/global.css";
     color: var(--text-color);
   }
 
+  .grid_windows p,
+    .grid_windows-2 p {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
   /* Style inputs with type="text", select elements and textareas */
   input[type="text"],
   select,
@@ -111,10 +117,10 @@ import "../styles/global.css";
     width: 100%; /* Full width */
     padding: 12px; /* Some padding */
     border: #b9758a solid 1px; /* Pink border */
-    border-radius: 4px; /* Rounded borders */
+    border-radius: 0.75rem; /* Rounded borders */
     box-sizing: border-box; /* Make sure that padding and width stays in place */
-    margin-top: 6px; /* Add a top margin */
-    margin-bottom: 16px; /* Bottom margin */
+    margin-top: 1rem; /* Add a top margin */
+    margin-bottom: 2rem; /* Bottom margin */
     resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
   }
 
@@ -185,6 +191,7 @@ import "../styles/global.css";
     }
 .information{
   order: -1;
+  margin-top: -1rem;
 }
 .formular{
   background-color: white;
@@ -196,10 +203,6 @@ import "../styles/global.css";
       grid-template-columns: 2fr 1fr;
     }
 
-    .grid_windows p,
-    .grid_windows-2 p {
-      margin-top: 2rem;
-    }
     .grid_windows-2 {
       display: grid;
       column-gap: 1rem;
@@ -215,7 +218,9 @@ import "../styles/global.css";
     }
 
     .submit {
-      margin-top: 2rem;
+      margin-top: 0rem;
+      text-align: end;
+      grid-area: 2/2;
     }
   }
 </style>
