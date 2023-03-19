@@ -1,0 +1,210 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/global.css";
+---
+
+<MainLayout Title="Bliv Frivillig">
+  <h1>Bliv Frivillig</h1>
+  <div class="grid_windows">
+  <p>På Sakura Festival har vi altid brug for flere ildhjerter som vil hjælpe med at gøre dette event til en fantastisk oplevelse for vores besøgende. Sakura Festival er et non-profit event, det vil sige at vi ikke kan tilbyde løn, men du får forplejning under hele eventet.</p>
+
+  <img src="../public/imgs/frivillige.webp" alt="Frivillige til Sakura Festival" />
+</div>
+<div class="grid_windows-2">
+  <p class="order">Af sikkerhedsmæssige årsager kan du kun tilmelde dig som frivillig når du er over 18 år. Derudover skal vi bruge en straffeattest fra dig. Der er mange opgaver der skal fordeles så det er muligt at du kan arbejde i en afdeling som interesserer dig!</p>
+  <img src="../public/imgs/frivillige.webp" alt="Frivillige til Sakura Festival" />
+</div>
+  
+  <h2>Udfyld formularen nedenfor</h2>
+
+  <div class="container">
+    <form action="formular.php">
+      <div class="formular">
+        <p>Vælg op til tre afdelinger du vil arbejde i</p>
+      
+      <div class="grid">
+        <input type="checkbox" id="event" name="event" value="eventkategori" />
+        <label for="event">Events</label>
+    </div>
+    <div class="grid">
+      <input type="checkbox" id="madboder" name="madboder" value="madbodkategori" />
+      <label for="madboder">Madboder</label>
+    </div>
+    <div class="grid">
+      <input type="checkbox" id="fotografi" name="fotografi" value="fotografikategori" />
+      <label for="fotografi">Fotografi</label>
+    </div>
+    <div class="grid">
+      <input type="checkbox" id="information" name="information " value="informationkategori" />
+      <label for="information">Information</label>
+    </div>
+    <div class="grid">
+      <input type="checkbox" id="videografi" name="videografi " value="videografikategori" />
+      <label for="videografi">Videografi</label>
+    </div>
+    <div class="eventbod">
+    <p>Ønsker du at holde et event eller have en bod?</p>
+    <a href="...">Klik her</a>
+    </div>
+  </div>
+<div class="information">
+      <label for="fname"></label>
+      <input type="text" id="fname" name="firstname" placeholder="Fornavn..." />
+
+      <label for="age"></label>
+      <input type="text" id="age" name="age" placeholder="Alder..." />
+
+ 
+      <label for="gender"></label>
+      <input type="text" id="gender" name="gender" placeholder="Køn..." />
+  
+
+      <label for="Email"></label>
+      <input type="text" id="Email" name="Email" placeholder="Email..." />
+
+   
+      <label for="number"></label>
+      <input type="text" id="tlf" name="tlf" placeholder="Tlf..." />
+    </div>
+    <div class="submit">
+      <input type="submit" value="Send"/>
+      <p><i class="arrow right"></i></p>
+    </div>
+    </form>
+  </div>
+</MainLayout>
+
+<style>
+  h2 {
+    font-weight: 500;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  img {
+    margin-bottom: 2rem;
+  }
+
+  .eventbod p{
+    margin-top: 2rem;
+  }
+
+  .eventbod a{
+    color: var( --text-color);
+ 
+  }
+
+  /* Style inputs with type="text", select elements and textareas */
+  input[type="text"],
+  select,
+  textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */
+    border: #B9758A solid 1px; /* Pink border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  /* Style the submit button with a specific background color etc */
+  input[type="submit"] {
+    background-color: #CB567A;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  /* When moving the mouse over the submit button, add a darker green color */
+  input[type="submit"]:hover {
+    background-color: #C33758;
+  }
+
+  /* Add a background color and some padding around the form */
+  .container {
+    border-radius: 5px;
+    background-color: #DFB1B6;
+    padding: 20px;
+    margin-bottom: 2rem;    
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  
+    margin-top: 1rem;
+  }
+
+label{
+    order: -1;
+  }
+
+  .information {
+margin-top: 2rem;
+color: #B9758A;
+  }
+
+  .submit input{
+  border-radius: 200px;
+  padding-right: 3rem;
+  }
+
+  input::placeholder{
+  color: #B9758A;
+}
+
+  .arrow {
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+@media (min-width: 650px) {
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  }
+  .formular{
+  }
+.grid_windows{
+display: grid;
+column-gap: 1rem;
+grid-template-columns: 2fr 1fr;
+}
+
+.grid_windows p, .grid_windows-2 p{
+  margin-top: 2rem;
+}
+.grid_windows-2{
+display: grid;
+column-gap: 1rem;
+grid-template-columns: 1fr 2fr;
+}
+
+.order{
+order: 2;
+}
+
+h2 {
+    margin-top: 1rem;
+  }
+
+  .submit{
+    margin-top: 2rem;
+  }
+}
+</style>
