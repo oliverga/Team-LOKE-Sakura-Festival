@@ -1,13 +1,18 @@
 ---
+// Importerer EventCard-komponenten fra './EventCard.astro'.
 import EventCard from './EventCard.astro';
 
+// Deklarerer variablerne 'events', 'category' og 'date' fra Astro-props.
 let {events, category, date} = Astro.props;
 
 let filteredEvents;
 
+// Hvis kategorien er 'Alle', filtreres begivenhederne kun efter dato.
 if (category === 'Alle') {
   filteredEvents = events.filter(event => event.date.includes(date));
-} else {
+} 
+// Hvis kategorien ikke er 'Alle', filtreres begivenhederne efter både kategori og dato.
+else {
   filteredEvents = events.filter(event => event.date.includes(date) && event.categories.includes(category));
 }
 ---

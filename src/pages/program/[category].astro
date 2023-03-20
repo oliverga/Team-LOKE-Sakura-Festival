@@ -1,22 +1,29 @@
 ---
+// Importerer komponenter fra Astro
 import MainLayout from "../../layouts/MainLayout.astro";
-import "../../styles/global.css";
-
-import { createClient } from '@supabase/supabase-js';
 import EventList from "../../components/EventList.astro";
 import FilterBtn from "../../components/Filter_btn.astro";
 
+// Importerer createClient-metoden fra '@supabase/supabase-js'.
+import { createClient } from '@supabase/supabase-js';
+
+// Importerer global CSS-stil.
+import "../../styles/global.css";
+
+// Definerer en funktion for at hente statiske paths.
 export async function getStaticPaths() {
     const supabaseUrl = 'https://ytbpkmmrhxeuawuggktn.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0YnBrbW1yaHhldWF3dWdna3RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3ODY5NDEsImV4cCI6MTk5NDM2Mjk0MX0.C7HKtjFf03nvDpJTjYOtRlR-1nQ18yozjpLSTlaRKO8';
     const supabase = createClient(supabaseUrl, supabaseKey);
 
+    // Henter alle begivenheder fra 'festival_events'-tabellen.
     const response = await supabase
         .from('festival_events')
         .select('*');
 
     const data = await response.data;
 
+    // Funktion til at filtrere begivenheder efter kategorier.
     function filterEventsByCategories(data) {
         const filteredEvents = {};
 
@@ -31,10 +38,12 @@ export async function getStaticPaths() {
 
         return filteredEvents;
     }
+
+    // Kategoriserede begivenheder.
     const categorizedEvents = filterEventsByCategories(data);
     const categories = Object.keys(categorizedEvents);
 
-    // make categories an array of objects with params and name
+    // Opretter en array af objekter med kategori-parametre og navne.
     const paths = categories.map(category => {
         return {
             params: {
@@ -43,30 +52,33 @@ export async function getStaticPaths() {
         };
     });
 
-    // add "category: all" to the paths array
+    // Tilføjer "category: all" til paths-arrayet, så der også er en "Alle events" underside.
     paths.push({
         params: {
             category: 'Alle',
         },
     });
 
-    return paths; // Return the 'paths' array directly
+    return paths; // Returnerer 'paths' arrayet.
 }
+
 
 const supabaseUrl = 'https://ytbpkmmrhxeuawuggktn.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0YnBrbW1yaHhldWF3dWdna3RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3ODY5NDEsImV4cCI6MTk5NDM2Mjk0MX0.C7HKtjFf03nvDpJTjYOtRlR-1nQ18yozjpLSTlaRKO8';
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+// Henter alle begivenheder fra 'festival_events'-tabellen og sorterer dem efter dato og starttidspunkt.
 const response = await supabase
   .from('festival_events')
   .select('*')
   .order('date', { ascending: true })
   .order ('start_time', { ascending: true });
 
-// response data as astro props
+
 const data = response.data
 
+// Funktion til at filtrere begivenheder efter kategorier.
 function filterEventsByCategories(data) {
   const filteredEvents = {};
 
@@ -81,9 +93,12 @@ function filterEventsByCategories(data) {
 
   return filteredEvents;
 }
+
+// Kategoriserede begivenheder.
 const categorizedEvents = filterEventsByCategories(data);
 const categories = Object.keys(categorizedEvents);
 
+// Deklarerer variablen 'category' fra Astro.params.
 const { category } = Astro.params;
 
 
