@@ -1,67 +1,225 @@
 ---
 ---
-
-
 <header>
-  <div class="first_list">
-    <a href="/"><img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo" /></a>
-    <a href="/"><p class="hide">Sakura Festival</p></a>
+  <div id="burger-menu">
+    <span></span>
   </div>
-
-  <nav class="hide">
-    <ul class="nav_list">
-      <li>
-        <a href="/program/Alle" class="nav_link">Program</a>
-      </li>
-      <li>
-        <a href="/bliv_frivillig" class="nav_link">Bliv Frivillig</a>
-      </li>
-      <li>
-        <a href="/om_os" class="nav_link">Om Sakura</a>
-      </li>
-      <li>
-        <a href="/find_vej" class="nav_link">Find Vej</a>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="hide">
-    <div class="last_list">
-      <a href="min_liste">Min Liste</a>
-      <p><b>DK</b>/ENG</p>
+  <a href="/"><img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo" /></a>
+  <div class="header_flex">
+    <div class="first_list">
+      <a href="/"><img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo hide" /></a>
+      <a href="/"><p class="hide">Sakura Festival</p></a>
+    </div>
+  
+    <nav class="hide">
+      <ul class="nav_list">
+        <li>
+          <a href="/program/Alle" class="nav_link">Program</a>
+        </li>
+        <li>
+          <a href="/bliv_frivillig" class="nav_link">Bliv Frivillig</a>
+        </li>
+        <li>
+          <a href="/om_os" class="nav_link">Om Sakura</a>
+        </li>
+        <li>
+          <a href="/find_vej" class="nav_link">Find Vej</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <div class="hide">
+      <div class="last_list">
+        <a href="min_liste">Min Liste</a>
+        <p><b>DK</b>/ENG</p>
+      </div>
     </div>
   </div>
-</header>
+  <div id="header_overlay">
+    <div class="burger-column">
+      <div class="first_list">
+        <a href="/"><img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo" /></a>
+        <a href="/"><p>Sakura Festival</p></a>
+      </div>
+      <nav>
+        <ul class="nav_list">
+          <li>
+            <a href="/program/Alle" class="nav_link">Program</a>
+          </li>
+          <li>
+            <a href="/bliv_frivillig" class="nav_link">Bliv Frivillig</a>
+          </li>
+          <li>
+            <a href="/om_os" class="nav_link">Om Sakura</a>
+          </li>
+          <li>
+            <a href="/find_vej" class="nav_link">Find Vej</a>
+          </li>
+        </ul>
+      </nav>
+    
+      <div>
+        <div class="last_list">
+          <a href="min_liste">Min Liste</a>
+          <p><b>DK</b>/ENG</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </header>
+
+  <script>
+    let burgerMenu = document.getElementById('burger-menu');
+    let overlay = document.getElementById('header_overlay');
+    burgerMenu.addEventListener('click',function(){
+      this.classList.toggle("close");
+      overlay.classList.toggle("overlay");
+    });
+
+  </script>
+
 
 <style>
+
+  #burger-menu {
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+    overflow: visible;
+    position: fixed;
+    z-index: 2;
+    color: black;
+    top: 1rem;
+    right: 1rem;
+    display: block;
+  }
+
+  #burger-menu span,
+  #burger-menu span:before,
+  #burger-menu span:after {
+    background: #101010;
+    display: block;
+    height: 0.4rem;
+    opacity: 1;
+    position: absolute;
+    transition: 0.3s ease-in-out;
+  }
+  #burger-menu span:before,
+  #burger-menu span:after {
+    content: "";
+  }
+  #burger-menu span {
+    right: 0px;
+    top: 13px;
+    width: 2rem;
+  }
+  #burger-menu span:before {
+    left: 0px;
+    top: -10px;
+    width: 2rem;
+  }
+  #burger-menu span:after {
+    left: 0px;
+    top: 10px;
+    width: 2rem;
+  }
+
+  #burger-menu.close span {
+    transform: rotate(-45deg);
+    top: 13px;
+    width: 27px;
+  }
+  #burger-menu.close span:before {
+    top: 0px;
+    transform: rotate(90deg);
+    width: 27px;
+  }
+  #burger-menu.close span:after {
+    top: 0px;
+    left:0;
+    transform: rotate(90deg);
+    opacity:0;
+    width:0;
+  }
+
   header {
-    display: flex;
-    flex-direction: column;
     text-decoration: none;
-    background-color: white;
+    background-color: none;
     white-space: nowrap;
   }
 
-  .hide {
+  .header_flex {
+    width: 100%;
     display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2rem;
+    margin: 0;
+    gap: 1rem;
   }
 
-  .nav_list{
-    position: fixed;
-    display: flex;
-    gap: 4rem;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
+  #header_overlay {
+    display: none;
+    background: linear-gradient(rgba(220, 31, 167, 0), rgba(202, 46, 176, 0));
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
   }
 
-  .last_list{
+  #header_overlay.overlay{
+    display: block;
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(rgba(220, 31, 166, 0.9), rgb(202, 46, 176));
+    opacity: 1;
+  }
+
+  .burger-column .nav_list{
+    margin-top: 8rem;
+  }
+
+  .burger-column .last_list{
+    margin-top: 6rem;
+  }
+
+  .nav_list {
+    list-style-type: none;
     display: flex;
-    gap: 4rem;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+    position: relative;
     width: 100%;
     text-align: center;
+    }
+
+    .last_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    gap: 2rem;
+    position: relative;
+    width: 100%;
+  }
+
+  .burger-column .first_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
   }
 
   a {
@@ -95,26 +253,38 @@
   }
 
 
-  @media (min-width: 650px) {
+  @media (min-width: 840px) {
+    #header_overlay.overlay{
+    display: none;
+    }
 
+    #burger-menu {
+      display: none;
+    }
     .hide {
       display: block;
     }
 
     header {
-
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
+      background-color: white;
       padding: 0.5rem 0;
       margin: 0;
       border: 1px solid rgba(225, 164, 204, 0.183);
-
       box-shadow: 0 0 10px rgba(225, 164, 204, 0.2);
       text-decoration: none;
       background-color: none;
     }
+
+    .header_flex {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 2rem;
+    margin: 0;
+    gap: 1rem;
+  }
 
     .nav_list {
     list-style-type: none;
@@ -128,7 +298,6 @@
     position: relative;
     width: 100%;
     text-align: center;
-
     }
 
     .last_list {
@@ -141,9 +310,7 @@
     gap: 2rem;
     position: relative;
     width: 100%;
-    
   }
-
     a {
     font-size: 16px;
   }
