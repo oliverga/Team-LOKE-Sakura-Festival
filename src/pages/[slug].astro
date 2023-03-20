@@ -88,6 +88,14 @@ const duration = (startHour + ":" + startMinute + " - " + endHour + ":" + endMin
 
 </MainLayout>
 
+<script>
+  // function for effect when clicking on min liste button
+  const listBtn = document.getElementById("min_liste_btn");
+  listBtn.addEventListener("click", function() {
+    listBtn.classList.toggle("active");
+  });
+</script>
+
 <style>
 
     .flex_row {
