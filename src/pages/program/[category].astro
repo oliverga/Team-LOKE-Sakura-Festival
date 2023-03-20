@@ -97,6 +97,13 @@ const { category } = Astro.params;
   
       <div>
         <ul class="categories">
+          <li>
+            <a href="/program/Alle">
+              <button>
+                Alle events
+              </button>
+            </a>
+          </li>
           {categories.map (category => (
             <li>
               <FilterBtn category={category} />
@@ -117,9 +124,9 @@ const { category } = Astro.params;
     }
   
     h2 {
-          margin-bottom: 1rem;
-          margin-top: 2rem;
-      }
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
     ul {
       display: flex;
       flex-direction: row;
@@ -128,14 +135,13 @@ const { category } = Astro.params;
       padding: 0;
       margin: 0;
       gap: 1rem;
-      overflow-x: scroll;
       margin-bottom: 2rem;
   
     }
     section {
       margin-bottom: 2rem;
       max-width: 800px;
-          margin-inline: auto;
+      margin-inline: auto;
     }
   
     .categories {
@@ -145,5 +151,23 @@ const { category } = Astro.params;
     a {
       color: var(--color-primary);
       text-decoration: none;
+    }
+
+    button {
+      background-color: #ed749d;
+      border: none;
+      color: #101010;
+      padding: 0.6rem 1.2rem;
+      border-radius: 500px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #cb5a80;
     }
   </style>

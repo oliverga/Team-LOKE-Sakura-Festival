@@ -6,18 +6,30 @@ import "../styles/global.css";
 <MainLayout Title="Bliv Frivillig">
   <h1>Bliv Frivillig</h1>
   <div class="grid_windows">
-    <p>
-      På Sakura Festival har vi altid brug for flere ildhjerter som vil hjælpe med at gøre dette event til en fantastisk oplevelse for vores besøgende. Sakura Festival er et non-profit event, det vil sige at vi ikke kan tilbyde løn, men du får
-      forplejning under hele eventet.
-    </p>
+    <div>
+      <h2>
+        Vær med til at skabe en uforglemmelig oplevelse!
+      </h2>
+      <p>
+        På Sakura Festival har vi altid brug for flere ildhjerter som vil hjælpe med at gøre dette event til en fantastisk oplevelse for vores besøgende. Sakura Festival er et non-profit event, det vil sige at vi ikke kan tilbyde løn, men du får
+        forplejning under hele eventet.
+      </p>
+    </div>
+
 
     <img src="/imgs/frivillige.webp" alt="Frivillige til Sakura Festival" />
   </div>
   <div class="grid_windows-2">
-    <p class="order">
-      Af sikkerhedsmæssige årsager kan du kun tilmelde dig som frivillig når du er over 18 år. Derudover skal vi bruge en straffeattest fra dig. Der er mange opgaver der skal fordeles så det er muligt at du kan arbejde i en afdeling som interesserer
-      dig!
-    </p>
+    <div  class="order">
+      <h2>
+        Sikkerhedskrav for frivillige på Sakura Festival
+      </h2>
+      <p>
+        Af sikkerhedsmæssige årsager kan du kun tilmelde dig som frivillig når du er over 18 år. Derudover skal vi bruge en straffeattest fra dig. Der er mange opgaver der skal fordeles så det er muligt at du kan arbejde i en afdeling som interesserer
+        dig!
+      </p>
+    </div>
+
     <img src="/imgs/koto_and_shakuhachi_workshop.webp" alt="Frivillige til Sakura Festival" />
   </div>
 
@@ -50,7 +62,7 @@ import "../styles/global.css";
         </div>
         <div class="eventbod">
           <p>Ønsker du at holde et event eller have en bod?</p>
-          <a href="...">Klik her</a>
+          <a href="/">Klik her</a>
         </div>
       </div>
       <div class="information">
@@ -94,7 +106,7 @@ import "../styles/global.css";
   }
 
   h2 {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   img {
@@ -107,9 +119,26 @@ import "../styles/global.css";
 
   .grid_windows p,
     .grid_windows-2 p {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+      margin-top: 0rem;
+      margin-bottom: 4rem;
     }
+
+  .grid_windows * {
+    margin-right: 0rem;
+  }
+
+  .grid_windows {
+    margin-top: 4rem;
+  }
+
+.grid_windows-2 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .grid_windows-2 * {
+    margin-left: 0rem;
+  }
 
   /* Style inputs with type="text", select elements and textareas */,
   select,
@@ -233,25 +262,35 @@ import "../styles/global.css";
       display: grid;
       column-gap: 1rem;
       grid-template-columns: 3fr 2fr;
+      margin-top: 4rem;
     }
 
     .grid_windows-2 {
       display: grid;
       column-gap: 1rem;
       grid-template-columns: 2fr 3fr;
+      margin-top: 2rem;
+    margin-bottom: 2rem;
     }
 
     .order {
       order: 2;
     }
 
-    h2 {
-      margin-top: 1rem;
-    }
 
     .submit {
       grid-area: 2/2;
     }
+
+    .grid_windows * {
+      margin-right: 1rem;
   }
+  .grid_windows-2 * {
+    margin-left: 1rem;
+  }
+
+  }
+
+
 
 </style>
