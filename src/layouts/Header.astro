@@ -4,7 +4,7 @@
   <div id="burger-menu">
     <span></span>
   </div>
-  <a href="/"><img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo" /></a>
+  <a href="/"><img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo hide_desktop" /></a>
   <div class="header_flex">
     <div class="first_list">
       <a href="/"><img src="/imgs/logo.svg" alt="Sakura Festival Logo" class="sakura-logo hide" /></a>
@@ -82,6 +82,9 @@
 
 <style>
 
+  .hide_desktop{
+    display: block;
+  }
   #burger-menu {
     cursor: pointer;
     height: 2rem;
@@ -261,8 +264,8 @@
     #burger-menu {
       display: none;
     }
-    .hide {
-      display: block;
+    .hide_desktop{
+    display: none;
     }
 
     header {
