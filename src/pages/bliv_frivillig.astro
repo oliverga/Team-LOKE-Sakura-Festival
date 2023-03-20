@@ -23,7 +23,7 @@ import "../styles/global.css";
 
   <h2>Udfyld formularen nedenfor</h2>
 
-  <form action="">
+  <form name="frivillig" netlify>
   <div class="container">
       <div class="formular">
         <p>Vælg op til tre afdelinger du vil arbejde i</p>
@@ -54,20 +54,26 @@ import "../styles/global.css";
         </div>
       </div>
       <div class="information">
-        <label for="fname"></label>
-        <input type="text" id="fname" name="firstname" placeholder="Fornavn..." />
-
-        <label for="age"></label>
-        <input type="text" id="age" name="age" placeholder="Alder..." />
-
-        <label for="gender"></label>
-        <input type="text" id="gender" name="gender" placeholder="Køn..." />
-
-        <label for="Email"></label>
-        <input type="text" id="Email" name="Email" placeholder="Email..." />
-
-        <label for="number"></label>
-        <input type="text" id="tlf" name="tlf" placeholder="Tlf..." />
+        <div>
+          <label for="fname"></label>
+          <input type="text" id="fname" name="firstname" placeholder="Fornavn..." />
+        </div>
+        <div>
+          <label for="age"></label>
+          <input type="text" id="age" name="age" placeholder="Alder..." />
+        </div>
+        <div>
+          <label for="gender"></label>
+          <input type="text" id="gender" name="gender" placeholder="Køn..." />
+        </div>
+        <div>
+          <label for="Email"></label>
+          <input type="text" id="Email" name="Email" placeholder="Email..." />
+        </div>
+        <div>
+          <label for="number"></label>
+          <input type="text" id="tlf" name="tlf" placeholder="Tlf..." />
+        </div>
       </div>
       <div class="submit">
         <input type="submit" value="Send" />
@@ -95,10 +101,6 @@ import "../styles/global.css";
     margin-bottom: 2rem;
   }
 
-  .eventbod p {
-    margin-top: 2rem;
-  }
-
   .eventbod a {
     color: var(--text-color);
   }
@@ -109,8 +111,7 @@ import "../styles/global.css";
       margin-bottom: 1rem;
     }
 
-  /* Style inputs with type="text", select elements and textareas */
-  input[type="text"],
+  /* Style inputs with type="text", select elements and textareas */,
   select,
   textarea {
     width: 100%; /* Full width */
@@ -123,6 +124,15 @@ import "../styles/global.css";
     resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
   }
 
+  .information input {
+    width: 100%;
+    border: #b9758a solid 1px;
+    border-radius: 0.75rem;
+    resize: vertical;
+    height: 2.5rem;
+    padding: 0.5rem;
+  }
+
   /* Style the submit button with a specific background color etc */
   input[type="submit"] {
     border: none;
@@ -131,6 +141,7 @@ import "../styles/global.css";
     background: none;
     color: white;
     margin-right: 1rem;
+    font-size: 1.2rem;
   }
 
   /* When moving the mouse over the submit button, add a darker green color */
@@ -139,14 +150,15 @@ import "../styles/global.css";
   .container {
     border-radius: 5px;
     background-color: #dfb1b6;
-    padding: 20px;
+    padding: 2.5rem;
     margin-bottom: 2rem;
+    gap: 2.5rem;
   }
 
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-top: 1rem;
+
   }
 
   label {
@@ -156,6 +168,11 @@ import "../styles/global.css";
   .information {
     margin-top: 2rem;
     color: #b9758a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 1rem;
+    gap: 1rem;
   }
 
   .submit {
@@ -165,9 +182,10 @@ import "../styles/global.css";
     width: fit-content;
     background-color: #cb567a;
     color: #fff;
-    padding: 0.4rem 1rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 500px;
     place-self: center;
+    margin-top: 1rem;
   }
 
   input::placeholder {
@@ -186,30 +204,41 @@ import "../styles/global.css";
     -webkit-transform: rotate(-45deg);
   }
 
+  .formular {
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 100%;
+    background-color: white;
+    padding: 2.5rem;
+  }
+
   @media (min-width: 650px) {
     .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
     }
-.information{
-  order: -1;
-  margin-top: -1rem;
-}
-.formular{
-  background-color: white;
-  padding: 1rem;
-}
+    .information{
+      order: -1;
+      margin-top: -1rem;
+    }
+    .formular{
+      background-color: white;
+      padding: 2.5rem;
+    }
     .grid_windows {
       display: grid;
       column-gap: 1rem;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 3fr 2fr;
     }
 
     .grid_windows-2 {
       display: grid;
       column-gap: 1rem;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 2fr 3fr;
     }
 
     .order {
@@ -221,9 +250,8 @@ import "../styles/global.css";
     }
 
     .submit {
-      margin-top: 0rem;
-      text-align: end;
       grid-area: 2/2;
     }
   }
+
 </style>
