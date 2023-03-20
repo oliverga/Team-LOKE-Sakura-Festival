@@ -1,4 +1,5 @@
 ---
+// Import af nødvendige biblioteker og komponenter
 import { createClient } from '@supabase/supabase-js';
 import BackBtn from '../components/Back_btn.astro';
 import FilterBtn from '../components/Filter_btn.astro';
@@ -6,6 +7,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 import ListBtn from '../components/List_btn.astro';
 import "../styles/global.css";
 
+// Funktion til at hente og generere statiske stier fra Supabase-databasen
 export async function getStaticPaths() {
     const supabaseUrl = 'https://ytbpkmmrhxeuawuggktn.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0YnBrbW1yaHhldWF3dWdna3RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3ODY5NDEsImV4cCI6MTk5NDM2Mjk0MX0.C7HKtjFf03nvDpJTjYOtRlR-1nQ18yozjpLSTlaRKO8';
@@ -17,26 +19,30 @@ export async function getStaticPaths() {
 
     const events = await response.data;
 
+    // Map events til stier og tilknyt de relevante props
     return events.map((event) => ({
         params: { slug: event.slug },
         props: { event },
     }));
 }
 
+// Hent astro props
 const { event } = Astro.props;
 const { date, start_time, end_time, categories} = event;
 
-
+// Opret variabel for ugedagen for eventet i dansk format
 const weekday = new Date(date).toLocaleDateString('da-DK', { weekday: 'long' });
 
+// Kapitaliser første bogstav i ugedagen
 const weekdayCapitalized = weekday.charAt(0).toUpperCase() + weekday.slice(1);
 
+// Opret variabler for start- og sluttidspunkt for eventet
 const startHour = start_time.split(":")[0];
 const startMinute = start_time.split(":")[1];
-
 const endHour = end_time.split(":")[0];
 const endMinute = end_time.split(":")[1];
 
+// Opret variabel for eventets varighed
 const duration = (startHour + ":" + startMinute + " - " + endHour + ":" + endMinute);
 
 ---
