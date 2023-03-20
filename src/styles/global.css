@@ -6,11 +6,11 @@
     --background-color: #f5f5f5;
     --text-color: #101010;
     --main-font: 'Inter', system-ui, sans-serif;
+    --h1-font: 'new-spirit', system-ui, sans-serif;
     
-    /* Mobile */
-    --h1-mobile: 50px;
-    --h2-mobile: 24px;
-    --brødtekst-mobile: 16px;
+    --h1-size: 50px;
+    --h2-size: 24px;
+    --brødtekst-size: 16px;
 
     /* Desktop */
 
@@ -30,7 +30,7 @@
     font-family: var(--main-font);
     font-weight: normal;
     line-height: 1.6;
-    color: #101010;
+    color: var(--text-color);
   }
    
   img {
@@ -40,24 +40,24 @@
   }
 
   h1 {
-		font-size: 50px;
+		font-size: var(--h1-size);
 		line-height: 1;
-		font-family: "new-spirit", serif;
+		font-family: var(--h1-font);
 		font-weight: 600;
 		font-style: normal;
     margin-top: 4rem;
 	}
 
   h2 {
-    font-size: 24px;
+    font-size: var(--h2-size);
     line-height: 1.2;
-    font-family: "Inter", serif;
+    font-family: var(--main-font);
     font-weight: normal;
   }
 
   p {
-    font-size: 16px;
+    font-size: var(--brødtekst-size);
     line-height: 1.6;
-    font-family: "Inter", serif;
+    font-family: var(--main-font);
     font-weight: normal;
   }
