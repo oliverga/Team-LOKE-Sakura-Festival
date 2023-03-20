@@ -7,39 +7,28 @@ import "../styles/global.css";
   <h1>Bliv Frivillig</h1>
   <div class="grid_windows">
     <div>
-      <h2>
-        Vær med til at skabe en uforglemmelig oplevelse!
-      </h2>
-      <p>
-        På Sakura Festival har vi altid brug for flere ildhjerter som vil hjælpe med at gøre dette event til en fantastisk oplevelse for vores besøgende. </p>
-        <p>Festivalen er et non-profit event, det vil sige at vi ikke kan tilbyde løn, men du får
-        forplejning under hele eventet.
-      </p>
+      <h2>Vær med til at skabe en uforglemmelig oplevelse!</h2>
+      <p>På Sakura Festival har vi altid brug for flere ildhjerter som vil hjælpe med at gøre dette event til en fantastisk oplevelse for vores besøgende.</p>
+      <p>Festivalen er et non-profit event, det vil sige at vi ikke kan tilbyde løn, men du får forplejning under hele eventet.</p>
     </div>
-
 
     <img src="/imgs/frivillige.webp" alt="Frivillige til Sakura Festival" />
   </div>
   <div class="grid_windows-2">
-    <div  class="order">
-      <h2>
-        Sikkerhedskrav for frivillige på Sakura Festival
-      </h2>
-      <p>
-        Af sikkerhedsmæssige årsager kan du kun tilmelde dig som frivillig når du er over 18 år. Derudover skal vi bruge en straffeattest fra dig. </p>
-        
-        <p>Der er mange opgaver der skal fordeles så det er muligt at du kan arbejde i en afdeling som interesserer
-        dig!
-      </p>
+    <div class="order">
+      <h2>Sikkerhedskrav for frivillige på Sakura Festival</h2>
+      <p>Af sikkerhedsmæssige årsager kan du kun tilmelde dig som frivillig når du er over 18 år. Derudover skal vi bruge en straffeattest fra dig.</p>
+
+      <p>Der er mange opgaver der skal fordeles så det er muligt at du kan arbejde i en afdeling som interesserer dig!</p>
     </div>
 
-    <img src="/imgs/koto_and_shakuhachi_workshop.webp" alt="Frivillige til Sakura Festival" />
+    <img src="/imgs/koto_and_shakuhachi_workshop.webp" alt="Kvinde bagfra som spiller på et japansk musikinstrument." />
   </div>
 
   <h2>Udfyld formularen nedenfor</h2>
 
   <form name="frivillig" netlify>
-  <div class="container">
+    <div class="container">
       <div class="formular">
         <p>Vælg op til tre afdelinger du vil arbejde i</p>
 
@@ -94,9 +83,8 @@ import "../styles/global.css";
         <input type="submit" value="Send" />
         <p><i class="arrow right"></i></p>
       </div>
-
-  </div>
-</form>
+    </div>
+  </form>
 </MainLayout>
 
 <style>
@@ -109,15 +97,14 @@ import "../styles/global.css";
     margin-bottom: 1rem;
   }
 
-
   .eventbod a {
     color: var(--text-color);
   }
 
   .grid_windows p,
-    .grid_windows-2 p {
-      margin-bottom: 1.5rem;
-    }
+  .grid_windows-2 p {
+    margin-bottom: 1.5rem;
+  }
 
   .grid_windows * {
     margin-right: 0rem;
@@ -127,12 +114,13 @@ import "../styles/global.css";
     margin-top: 4rem;
   }
 
-.grid_windows-2 {
+  .grid_windows-2 {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
 
-  /* Style inputs with type="text", select elements and textareas */,
+  /* Style inputs with type="text", select elements and textareas */
+  ,
   select,
   textarea {
     width: 100%; /* Full width */
@@ -179,7 +167,6 @@ import "../styles/global.css";
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
   }
 
   label {
@@ -242,11 +229,11 @@ import "../styles/global.css";
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem;
     }
-    .information{
+    .information {
       order: -1;
       margin-top: -1rem;
     }
-    .formular{
+    .formular {
       background-color: white;
       padding: 2.5rem;
     }
@@ -262,20 +249,15 @@ import "../styles/global.css";
       column-gap: 1rem;
       grid-template-columns: 2fr 3fr;
       margin-top: 2rem;
-    margin-bottom: 2rem;
+      margin-bottom: 2rem;
     }
 
     .order {
       order: 2;
     }
 
-
     .submit {
       grid-area: 2/2;
     }
-
   }
-
-
-
 </style>
