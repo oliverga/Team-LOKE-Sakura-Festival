@@ -51,7 +51,7 @@ const categories = Object.keys(categorizedEvents);
 const { category } = Astro.params;
 ---
 
-<MainLayout>
+<MainLayout title="Komponenter">
   <h1>Komponenter</h1>
   <BackBtn />
 
@@ -71,7 +71,7 @@ const { category } = Astro.params;
     <IndexCard title="Om Sakura" img="om_os.webp" link="/om_os" />
     <IndexCard title="Find Vej" img="find_vej.webp" link="/find_vej" /> -->
   </div>
-  <InfoRow title="April 22-23" subtitle="11:00-16:00" icon="imgs/calendar.svg" alt="kalender" />
+  <InfoRow title="April 22-23" subtitle="11:00-16:00" icon="/imgs/calendar.svg" alt="kalender" />
   <HeartBtn />
   <ListBtn />
 </MainLayout>
