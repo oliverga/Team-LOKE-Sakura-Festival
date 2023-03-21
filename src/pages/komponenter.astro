@@ -1,6 +1,6 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
 import "../styles/global.css";
+import MainLayout from "../layouts/MainLayout.astro";
 import BackBtn from "../components/Back_btn.astro";
 import EventList from "../components/EventList.astro";
 import FilterBtn from "../components/Filter_btn.astro";
@@ -9,15 +9,133 @@ import IndexCard from "../components/IndexCard.astro";
 import InfoRow from "../components/InfoRow.astro";
 import ListBtn from "../components/List_btn.astro";
 
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = 'https://ytbpkmmrhxeuawuggktn.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0YnBrbW1yaHhldWF3dWdna3RuIiwicm9sZSI6ImFub24iLCJpYXQiOjE2Nzg3ODY5NDEsImV4cCI6MTk5NDM2Mjk0MX0.C7HKtjFf03nvDpJTjYOtRlR-1nQ18yozjpLSTlaRKO8';
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Henter alle begivenheder fra 'festival_events'-tabellen og sorterer dem efter dato og starttidspunkt.
+const response = await supabase
+  .from('festival_events')
+  .select('*')
+  .limit(1)
+  .order('date', { ascending: true })
+  .order ('start_time', { ascending: true });
+
+
+const data = response.data
+
+// Funktion til at filtrere begivenheder efter kategorier.
+function filterEventsByCategories(data) {
+  const filteredEvents = {};
+
+  data.forEach(event => {
+    event.categories.forEach(category => {
+      if (!filteredEvents.hasOwnProperty(category)) {
+        filteredEvents[category] = [];
+      }
+      filteredEvents[category].push(event);
+    });
+  });
+
+  return filteredEvents;
+}
+
+// Kategoriserede begivenheder.
+const categorizedEvents = filterEventsByCategories(data);
+const categories = Object.keys(categorizedEvents);
+
+// Deklarerer variablen 'category' fra Astro.params.
+const { category } = Astro.params;
 ---
 
 <MainLayout>
   <h1>Komponenter</h1>
   <BackBtn />
-  <EventList />
-  <FilterBtn />
+
+  <div>
+    <ul class="categories">
+      {categories.map (category => (
+        <li>
+          <FilterBtn category={category} />
+        </li>
+      ))}
+    </ul>
+  </div>
+  <EventList date="2023-04-22" events={data} category='Alle'/>
+  <div class="grid">
+    <IndexCard title="Program" img="program.webp" link="/program/Alle" />
+    <!-- <IndexCard title="Bliv Frivillig" img="bliv_frivillig.webp" link="/bliv_frivillig" />
+    <IndexCard title="Om Sakura" img="om_os.webp" link="/om_os" />
+    <IndexCard title="Find Vej" img="find_vej.webp" link="/find_vej" /> -->
+  </div>
+  <InfoRow title="April 22-23" subtitle="11:00-16:00" icon="imgs/calendar.svg" alt="kalender" />
   <HeartBtn />
-  <IndexCard />
-  <InfoRow />
   <ListBtn />
 </MainLayout>
+
+<style>
+
+    h1 {
+      margin-bottom: 4rem;
+    }
+  
+    h2 {
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+    ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      gap: 1rem;
+      margin-bottom: 2rem;
+  
+    }
+    section {
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-inline: auto;
+    }
+  
+    .categories {
+      margin-block: 1rem;
+    }
+    
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+
+    button {
+      background-color: #ed749d;
+      border: none;
+      color: #101010;
+      padding: 0.6rem 1.2rem;
+      border-radius: 500px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #cb5a80;
+    }
+
+    .grid {
+      grid-template-columns: 1fr 1fr;
+      display: grid;
+      grid-gap: 1rem;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+    }
+
+  </style>
